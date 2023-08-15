@@ -3,7 +3,9 @@ name: winx64
 run-name: winx64 build
 on: [push]
 jobs:
-  check-bats-version:
+  angle-win-x64:
+    env:
+      DEPOT_TOOLS_WIN_TOOLCHAIN: 0
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
@@ -27,6 +29,13 @@ jobs:
         shell: bash
         run: |
           ls -l $GITHUB_WORKSPACE/gnu/src/angle/depot 
+      - name: pull code
+        uses: actions/checkout@v3
+        with:
+          repository: google/angle
+          ref: refs/heads/main
+          submodules: true
+          path: gnu/src/angle/code
       - name: publish
         uses: actions/upload-artifact@v3
         with:
