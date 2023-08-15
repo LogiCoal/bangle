@@ -17,7 +17,7 @@ jobs:
         shell: bash
         run: |
           echo $GITHUB_WORKSPACE
-          cd $GITHUB_WORKSPACE && ls -alr
+          ls -alr $GITHUB_WORKSPACE
           7z x $GITHUB_WORKSPACE/depot_tools.zip -o$HOME/gnu/src/angle/depot
           cd $HOME/gnu/src/angle/depot && gclient
       - name: pull code
