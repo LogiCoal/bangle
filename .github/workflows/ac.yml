@@ -28,10 +28,7 @@ jobs:
         run: |
           ls -l $GITHUB_WORKSPACE/gnu/src/angle/depot 
       - name: publish
-        uses: svenstaro/upload-release-action@v2
+      - uses: actions/upload-artifact@v3
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: D:\a\bangle\bangle\gnu\*
-          tag: ${{ github.ref }}
-          overwrite: true
-          file_glob: true
+          name: art
+          path: $GITHUB_WORKSPACE/gnu/**
