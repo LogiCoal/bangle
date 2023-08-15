@@ -10,8 +10,11 @@ jobs:
         shell: bash
         run: cd c:/ && mkdir src
       - name: pull code
-        shell: bash
-        run: cd c:/src && git pull https://github.com/google/angle
+        uses: actions/checkout@v3
+        with:
+          repository: google/angle
+          ref: refs/heads/main
+          path: c:/src
       - name: Download a file
         shell: bash
         run: curl https://storage.googleapis.com/chrome-infra/depot_tools.zip -o c:/tmp/
