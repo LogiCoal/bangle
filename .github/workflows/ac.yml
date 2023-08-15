@@ -14,7 +14,6 @@ jobs:
         with:
           repository: google/angle
           ref: refs/heads/main
-          path: c:/src
       - name: Download a file
         shell: bash
         run: curl https://storage.googleapis.com/chrome-infra/depot_tools.zip -o c:/tmp/
