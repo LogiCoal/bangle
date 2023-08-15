@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
             name: art
-            path: $GITHUB_WORKSPACE/gnu/
+            path: D:\a\bangle\bangle\gnu
