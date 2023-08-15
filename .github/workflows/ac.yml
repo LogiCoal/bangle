@@ -15,6 +15,7 @@ jobs:
           mkdir $GITHUB_WORKSPACE/gnu
           mkdir $GITHUB_WORKSPACE/gnu/src
           mkdir $GITHUB_WORKSPACE/gnu/src/angle
+          mkdir $GITHUB_WORKSPACE/gnu/src/angle/code
           mkdir $GITHUB_WORKSPACE/gnu/src/angle/depot
       - name: Download depot_tools
         shell: bash
@@ -22,11 +23,12 @@ jobs:
           echo $GITHUB_WORKSPACE
           ls -alr $GITHUB_WORKSPACE
           7z x $GITHUB_WORKSPACE/depot_tools.zip -o$GITHUB_WORKSPACE/gnu/src/angle/depot
-          cd $GITHUB_WORKSPACE/gnu/src/angle/depot && gclient
+          ls -l $GITHUB_WORKSPACE/gnu/src/angle/depot 
       - name: pull code
         uses: actions/checkout@v3
         with:
           repository: google/angle
           ref: refs/heads/main
           submodules: true
+          path: gnu/src/angle/code
 
