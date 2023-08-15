@@ -24,11 +24,11 @@ jobs:
           ls -alr $GITHUB_WORKSPACE
           7z x $GITHUB_WORKSPACE/depot_tools.zip -o$GITHUB_WORKSPACE/gnu/src/angle/depot
           ls -l $GITHUB_WORKSPACE/gnu/src/angle/depot 
-      - name: pull code
-        uses: actions/checkout@v3
+      - name: compress
+        uses: svenstaro/upload-release-action@v2
         with:
-          repository: google/angle
-          ref: refs/heads/main
-          submodules: true
-          path: gnu/src/angle/code
-
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: $GITHUB_WORKSPACE/gnu/*
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
