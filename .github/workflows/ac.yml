@@ -8,12 +8,20 @@ jobs:
     steps:
       - name: create source dir
         shell: bash
-        run: cd c:/ && mkdir src
+        run: |
+          mkdir c:/gnu
+          mkdir c:/gnu/src
+          mkdir c:/gnu/src/angle
+          mkdir c:/gnu/src/angle/depot
+      - name: Download depot_tools
+        shell: bash
+        run: |
+          curl https://storage.googleapis.com/chrome-infra/depot_tools.zip -o c:/gnu/src/angle/depot
+          cd c:/gnu/src/angle/depot && 7z x .\depot_tools.zip
       - name: pull code
         uses: actions/checkout@v3
         with:
           repository: google/angle
           ref: refs/heads/main
-      - name: Download a file
-        shell: bash
-        run: curl https://storage.googleapis.com/chrome-infra/depot_tools.zip -o c:/tmp/
+          submodules: true
+
