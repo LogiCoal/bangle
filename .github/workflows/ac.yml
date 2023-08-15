@@ -23,8 +23,11 @@ jobs:
           echo $GITHUB_WORKSPACE
           ls -alr $GITHUB_WORKSPACE
           7z x $GITHUB_WORKSPACE/depot_tools.zip -o$GITHUB_WORKSPACE/gnu/src/angle/depot
+      - name: show depo
+        shell: bash
+        run: |
           ls -l $GITHUB_WORKSPACE/gnu/src/angle/depot 
-      - name: compress
+      - name: publish
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
