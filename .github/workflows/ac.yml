@@ -24,6 +24,11 @@ jobs:
           echo $GITHUB_WORKSPACE
           ls -alr $GITHUB_WORKSPACE
           7z x $GITHUB_WORKSPACE/depot_tools.zip -o$GITHUB_WORKSPACE/gnu/src/angle/depot
+
+      - name: list depot_tools
+        shell: bash
+        run: |
+          ls -al D:\a\bangle\bangle\gnu\src\angle\depot
           
       - name: client
         shell: cmd
