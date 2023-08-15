@@ -30,7 +30,7 @@ jobs:
         run: |
           ls -al D:/a/bangle/bangle/gnu/src/angle/depot
           
-      - name: client
+      - name: gclient init
         shell: cmd
         run: |
           set "PATH=D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
@@ -46,7 +46,7 @@ jobs:
         run: |
           set "PATH=D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
           set "DEPOT_TOOLS_WIN_TOOLCHAIN=0"
-          cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code && git clone --depth 1 -b main --recurse-submodules https://github.com/google/angle.git
+          cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code && git clone --depth 1 -b main  https://github.com/google/angle.git
           cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code\\angle && python scripts\bootstrap.py
 
       - name: gclient sync
