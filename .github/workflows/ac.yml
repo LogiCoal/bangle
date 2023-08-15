@@ -16,8 +16,8 @@ jobs:
       - name: Download depot_tools
         shell: bash
         run: |
-          curl https://storage.googleapis.com/chrome-infra/depot_tools.zip -o $HOME/gnu/src/angle/depot
-          cd $HOME/gnu/src/angle/depot && 7z x .\depot_tools.zip
+          7z x depot_tools.zip -o$HOME/gnu/src/angle/depot
+          cd $HOME/gnu/src/angle/depot && gclient
       - name: pull code
         uses: actions/checkout@v3
         with:
