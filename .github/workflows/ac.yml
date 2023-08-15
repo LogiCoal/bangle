@@ -48,12 +48,18 @@ jobs:
           set "DEPOT_TOOLS_WIN_TOOLCHAIN=0"
           cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code && git clone --depth 1 -b main  https://github.com/google/angle.git
           
-      - name: gclient sync
+      - name: angle bootstrap
         shell: cmd
         run: |
           set "PATH=D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
           set "DEPOT_TOOLS_WIN_TOOLCHAIN=0"
           cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code\\angle && python scripts\bootstrap.py
+      
+      - name: gclient sync
+        shell: cmd
+        run: |
+          set "PATH=D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
+          set "DEPOT_TOOLS_WIN_TOOLCHAIN=0"
           cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code\\angle && gclient sync
 
       - name: compress
@@ -65,4 +71,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
             name: art
-            file: D:\a\bangle\bangle\gnu.7z
+            path: D:\\a\\bangle\\bangle\\gnu.7z
