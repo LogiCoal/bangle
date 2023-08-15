@@ -34,7 +34,7 @@ jobs:
         shell: cmd
         run: |
           set "PATH=D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
-          gclient
+          cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot && gclient
      
       - name: Set up Python 3.x
         uses: actions/setup-python@v2
@@ -47,13 +47,13 @@ jobs:
           set "PATH=D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
           set "DEPOT_TOOLS_WIN_TOOLCHAIN=0"
           cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code && git clone --depth 1 -b main  https://github.com/google/angle.git
-          cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code\\angle && python scripts\bootstrap.py
-
+          
       - name: gclient sync
         shell: cmd
         run: |
           set "PATH=D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
           set "DEPOT_TOOLS_WIN_TOOLCHAIN=0"
+          cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code\\angle && python scripts\bootstrap.py
           cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code\\angle && gclient sync
 
       - name: compress
