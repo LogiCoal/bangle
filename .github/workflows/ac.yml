@@ -16,7 +16,7 @@ jobs:
       - name: Download depot_tools
         shell: bash
         run: |
-          7z x ./depot_tools.zip -o$HOME/gnu/src/angle/depot
+          7z x $GITHUB_WORKSPACE/depot_tools.zip -o$HOME/gnu/src/angle/depot
           cd $HOME/gnu/src/angle/depot && gclient
       - name: pull code
         uses: actions/checkout@v3
