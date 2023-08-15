@@ -44,7 +44,7 @@ jobs:
       - name: pull code
         shell: cmd
         run: |
-          cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code && git clone https://github.com/google/angle.git
+          cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code && git clone --depth 1 -b main --recurse-submodules https://github.com/google/angle.git
           set "PATH=D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
           set "DEPOT_TOOLS_WIN_TOOLCHAIN=0"
           cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code\\angle && python scripts\bootstrap.py
