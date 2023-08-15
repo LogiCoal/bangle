@@ -17,25 +17,34 @@ jobs:
           mkdir $GITHUB_WORKSPACE/gnu/src/angle
           mkdir $GITHUB_WORKSPACE/gnu/src/angle/code
           mkdir $GITHUB_WORKSPACE/gnu/src/angle/depot
+          
       - name: Download depot_tools
         shell: bash
         run: |
           echo $GITHUB_WORKSPACE
           ls -alr $GITHUB_WORKSPACE
           7z x $GITHUB_WORKSPACE/depot_tools.zip -o$GITHUB_WORKSPACE/gnu/src/angle/depot
-      - name: show depo
-        shell: bash
+          
+      - name: client
+        shell: cmd
         run: |
-          ls -l $GITHUB_WORKSPACE/gnu/src/angle/depot 
-      - name: pull code
-        env:
-          DEPOT_TOOLS_WIN_TOOLCHAIN: 0
-        uses: actions/checkout@v3
+          set "D:\a\bangle\bangle\gnu\src\angle\depot;%PATH%"
+          gclient
+     
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
         with:
-          repository: google/angle
-          ref: refs/heads/main
-          submodules: true
-          path: gnu/src/angle/code
+          python-version: '3.x'
+  
+      - name: pull code
+        shell: cmd
+        run: |
+          git clone https://github.com/google/angle.git D:\a\bangle\bangle\gnu\src\angle\code
+          set "D:\a\bangle\bangle\gnu\src\angle\depot;%PATH%"
+          set "DEPOT_TOOLS_WIN_TOOLCHAIN=0"
+          cd D:\a\bangle\bangle\gnu\src\angle\code\angle && python scripts\bootstrap.py
+          cd D:\a\bangle\bangle\gnu\src\angle\code\angle && gclient sync
+          
       - name: publish
         uses: actions/upload-artifact@v3
         with:
