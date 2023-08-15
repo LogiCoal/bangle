@@ -9,15 +9,15 @@ jobs:
       - name: create source dir
         shell: bash
         run: |
-          mkdir c:/gnu
-          mkdir c:/gnu/src
-          mkdir c:/gnu/src/angle
-          mkdir c:/gnu/src/angle/depot
+          mkdir d:/gnu
+          mkdir d:/gnu/src
+          mkdir d:/gnu/src/angle
+          mkdir d:/gnu/src/angle/depot
       - name: Download depot_tools
         shell: bash
         run: |
-          sudo curl https://storage.googleapis.com/chrome-infra/depot_tools.zip -o c:/gnu/src/angle/depot
-          sudo cd c:/gnu/src/angle/depot && 7z x .\depot_tools.zip
+          curl https://storage.googleapis.com/chrome-infra/depot_tools.zip -o d:/gnu/src/angle/depot
+          cd d:/gnu/src/angle/depot && 7z x .\depot_tools.zip
       - name: pull code
         uses: actions/checkout@v3
         with:
