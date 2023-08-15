@@ -1,1 +1,11 @@
 
+name: winx64
+run-name: winx64 build
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: windows-2022
+    steps:
+      - run: git pull https://github.com/google/angle.git
+      - name: Download a file
+        run: curl https://storage.googleapis.com/chrome-infra/depot_tools.zip -o c:/tmp/
