@@ -28,7 +28,7 @@ jobs:
         run: |
           ls -l $GITHUB_WORKSPACE/gnu/src/angle/depot 
       - name: publish
-      - uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
-          name: art
-          path: $GITHUB_WORKSPACE/gnu/**
+            name: art
+            path: $GITHUB_WORKSPACE/gnu/
