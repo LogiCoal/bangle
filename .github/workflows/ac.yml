@@ -4,8 +4,6 @@ run-name: winx64 build
 on: [push]
 jobs:
   angle-win-x64:
-    env:
-      DEPOT_TOOLS_WIN_TOOLCHAIN: 0
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v3
@@ -30,6 +28,8 @@ jobs:
         run: |
           ls -l $GITHUB_WORKSPACE/gnu/src/angle/depot 
       - name: pull code
+        env:
+          DEPOT_TOOLS_WIN_TOOLCHAIN: 0
         uses: actions/checkout@v3
         with:
           repository: google/angle
