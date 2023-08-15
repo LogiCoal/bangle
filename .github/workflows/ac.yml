@@ -33,7 +33,7 @@ jobs:
       - name: client
         shell: cmd
         run: |
-          set "D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
+          set "PATH=D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
           gclient
      
       - name: Set up Python 3.x
@@ -45,7 +45,7 @@ jobs:
         shell: cmd
         run: |
           git clone https://github.com/google/angle.git D:\a\bangle\bangle\gnu\src\angle\code
-          set "D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
+          set "PATH=D:\\a\\bangle\\bangle\\gnu\\src\angle\\depot;%PATH%"
           set "DEPOT_TOOLS_WIN_TOOLCHAIN=0"
           cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code\\angle && python scripts\bootstrap.py
           cd D:\\a\\bangle\\bangle\\gnu\\src\angle\\code\\angle && gclient sync
