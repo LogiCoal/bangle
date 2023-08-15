@@ -6,7 +6,12 @@ jobs:
   check-bats-version:
     runs-on: windows-2022
     steps:
-      - name: pull code 
-        run: git pull https://github.com/google/angle
+      - name: create source dir
+        shell: bash
+        run: cd c:/ && mkdir src
+      - name: pull code
+        shell: bash
+        run: cd c:/src && git pull https://github.com/google/angle
       - name: Download a file
+        shell: bash
         run: curl https://storage.googleapis.com/chrome-infra/depot_tools.zip -o c:/tmp/
