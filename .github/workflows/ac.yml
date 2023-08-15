@@ -6,6 +6,9 @@ jobs:
   check-bats-version:
     runs-on: windows-2022
     steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: create source dir
         shell: bash
         run: |
